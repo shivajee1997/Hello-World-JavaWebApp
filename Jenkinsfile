@@ -1,5 +1,5 @@
 pipeline {
-    agent { dockerfile true }
+    agent any
     tools {
         maven "Maven"
         jdk "JDK"
