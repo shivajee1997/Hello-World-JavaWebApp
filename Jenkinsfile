@@ -32,14 +32,7 @@ pipeline {
                 }
             }
         }
-        stage('Registry') {
-            steps {
-                dir("${workspace}") {
-                #sh 'docker image tag helloworldjavawebapp:latest 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
-                #sh 'docker image push 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
-                }
-            }
-        }
+        
      }
     post {
        always {
