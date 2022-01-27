@@ -21,7 +21,7 @@ pipeline {
         stage('Container Build') {
             steps {
                 dir("${workspace}") {
-                sh 'docker build -t helloworldjavawebapp:latest'
+                sh 'docker build -t helloworldjavawebapp'
                 }
             }
         }
