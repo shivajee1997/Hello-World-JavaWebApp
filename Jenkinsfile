@@ -18,6 +18,20 @@ pipeline {
                 }
             }
         }
+        stage('Container Build') {
+            steps {
+                dir("${workspace}") {
+                sh 'docker build -t Hello-World-JavaWebApp'
+                }
+            }
+        }
+        stage('Registry') {
+            steps {
+                dir("${workspace}") {
+                sh 'docker image tag Hello-World-JavaWebApp:latest public.ecr.aws/n3z7k8z4/venkata_first/Hello-World-JavaWebApp:latest'
+                }
+            }
+        }
      }
     post {
        always {
