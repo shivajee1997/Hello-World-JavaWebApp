@@ -35,8 +35,8 @@ pipeline {
         stage('Registry') {
             steps {
                 dir("${workspace}") {
-                sh 'docker image tag helloworldjavawebapp:latest public.ecr.aws/n3z7k8z4/venkata_first/helloworldjavawebapp:latest'
-                sh 'docker image push public.ecr.aws/n3z7k8z4/venkata_first/helloworldjavawebapp:latest'
+                sh 'docker image tag helloworldjavawebapp:latest 725482889936.dkr.ecr.us-east-1.amazonaws.com/first/helloworldjavawebapp:latest'
+                sh 'docker image push 725482889936.dkr.ecr.us-east-1.amazonaws.com/first/helloworldjavawebapp:latest'
                 }
             }
         }
