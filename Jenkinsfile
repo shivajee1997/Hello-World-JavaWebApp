@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                dir("${workspace}/my-app") {
+                dir("${workspace}") {
                 sh 'mvn -B -DskipTests clean package'
                 }
             }
