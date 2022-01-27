@@ -25,6 +25,13 @@ pipeline {
                 }
             }
         }
+        stage('Registry Auth') {
+            steps {
+                dir("${workspace}") {
+                sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 725482889936.dkr.ecr.us-east-1.amazonaws.com'
+                }
+            }
+        }
         stage('Registry') {
             steps {
                 dir("${workspace}") {
