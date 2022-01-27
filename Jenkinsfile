@@ -29,6 +29,7 @@ pipeline {
             steps {
                 dir("${workspace}") {
                 sh 'docker image tag helloworldjavawebapp:latest public.ecr.aws/n3z7k8z4/venkata_first/helloworldjavawebapp:latest'
+                sh 'docker image push public.ecr.aws/n3z7k8z4/venkata_first/helloworldjavawebapp:latest'
                 }
             }
         }
