@@ -21,14 +21,14 @@ pipeline {
         stage('Container Build') {
             steps {
                 dir("${workspace}") {
-                sh 'docker build -t hello-world-javawebapp:latest'
+                sh 'docker build -t helloworldjavawebapp:latest'
                 }
             }
         }
         stage('Registry') {
             steps {
                 dir("${workspace}") {
-                sh 'docker image tag hello-world-javawebapp:latest public.ecr.aws/n3z7k8z4/venkata_first/hello-world-javawebapp:latest'
+                sh 'docker image tag helloworldjavawebapp:latest public.ecr.aws/n3z7k8z4/venkata_first/helloworldjavawebapp:latest'
                 }
             }
         }
