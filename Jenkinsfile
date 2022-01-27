@@ -37,6 +37,7 @@ pipeline {
                 dir("${workspace}") {
                 sh 'docker tag helloworldjavawebapp:latest 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
                 sh 'docker push 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
+                    sh 'echo webhook'
                 }
             }
         }
