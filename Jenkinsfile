@@ -42,7 +42,7 @@ pipeline {
                 
                     withAWS(credentials: 'Personla', region: 'us-east-1') {
                         sh 'aws eks update-kubeconfig --region us-east-1 --name first'
-                        sh 'kubectl --version'
+                        sh 'kubectl version'
                     }
                 
                 
