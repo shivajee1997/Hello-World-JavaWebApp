@@ -37,13 +37,12 @@ pipeline {
                 }
             }
         }
-        stage('ECR Deploy') {
+        stage('Eks Deploy') {
             steps {
                 dir("${workspace}") {
                     withAWS(credentials: 'Personla', region: 'us-east-1') {
-                        sh 'docker tag helloworldjavawebapp:latest 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
-                        sh 'docker push 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
-                        sh 'echo webhook'
+                        sh 'aws eks update-kubeconfig --region us-east-1 --name first'
+                        sh 'kubectl --version'
                     }
                 
                 }
