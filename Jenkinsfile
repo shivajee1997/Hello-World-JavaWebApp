@@ -42,6 +42,7 @@ pipeline {
                 
                     withAWS(credentials: 'Personla', region: 'us-east-1') {
                         sh 'aws eks update-kubeconfig --region us-east-1 --name First'
+                        sh 'kubectl delete pod java'
                         sh 'kubectl run java --image 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
                     }
                 
