@@ -37,8 +37,6 @@ pipeline {
                         sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 725482889936.dkr.ecr.us-east-1.amazonaws.com'
                         sh 'docker tag helloworldjavawebapp:latest 725482889936.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}'
                         sh 'docker push 725482889936.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}'
-                        sh 'docker tag 725482889936.dkr.ecr.us-east-1.amazonaws.com/${IMAGE} 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
-                        sh 'docker push 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
                     }
                 
                 
@@ -50,7 +48,7 @@ pipeline {
                     withAWS(credentials: 'Personla', region: 'us-east-1') {
                         sh 'aws eks update-kubeconfig --region us-east-1 --name First'
                         sh 'echo 7725482889936.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}'
-                        sh 'kubectl set image deployment.v1.apps/first-java-deployment java=7725482889936.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}'
+                        sh 'kubectl set image deployment.v1.apps/first-java-deployment java=725482889936.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}'
                     }
                 
                 
