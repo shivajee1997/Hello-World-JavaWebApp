@@ -4,6 +4,11 @@ pipeline {
         maven "Maven"
         jdk "JDK"
     }
+    environment { 
+       NAME = "helloworldjavawebapp"
+       VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
+       IMAGE = "${NAME}:${VERSION}"
+    }
     stages {
         stage('Pulling the code'){
             steps{
@@ -30,8 +35,8 @@ pipeline {
                 
                     withAWS(credentials: 'Personla', region: 'us-east-1') {
                         sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 725482889936.dkr.ecr.us-east-1.amazonaws.com'
-                        sh 'docker tag helloworldjavawebapp:latest 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
-                        sh 'docker push 725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
+                        sh 'docker tag helloworldjavawebapp:latest 725482889936.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}'
+                        sh 'docker push 725482889936.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}'
                     }
                 
                 
