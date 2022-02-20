@@ -6,7 +6,7 @@ pipeline {
     }
     environment { 
        NAME = "helloworldjavawebapp"
-       VERSION = "${env.BUILD_ID}-${env.GIT_COMMIT}"
+       VERSION = "${env.BUILD_ID}"
        IMAGE = "${NAME}:${VERSION}"
     }
     stages {
@@ -47,7 +47,7 @@ pipeline {
                 
                     withAWS(credentials: 'Personla', region: 'us-east-1') {
                         sh 'aws eks update-kubeconfig --region us-east-1 --name First'
-                        sh 'kubectl set image deployment.v1.apps/first-java-deployment java=725482889936.dkr.ecr.us-east-1.amazonaws.com/helloworldjavawebapp:latest'
+                        sh 'kubectl set image deployment.v1.apps/first-java-deployment java=7725482889936.dkr.ecr.us-east-1.amazonaws.com/${IMAGE}'
                     }
                 
                 
